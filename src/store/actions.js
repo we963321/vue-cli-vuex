@@ -1,10 +1,11 @@
 
 import axios from 'axios'
 import router from '../router'
+import helper from '../helper'
 
 export default { //非同步 api一定樣放這   //dispatch
 	CONTENTS_READ: (context) => {   //context為action的obj，可使用其功能
-		return axios.get('http://127.0.0.1:3000/contents').then((res) => {
+		return axios.get('http://127.0.0.1:3000/contents/').then((res) => {
 			context.commit('setContents', res.data)
 		})
 	},
@@ -31,7 +32,7 @@ export default { //非同步 api一定樣放這   //dispatch
 			context.commit('deleteContent', index)
 		})
 	},
-	CONTENTS_UPDATE: (context, { id, input }) => {
+	CONTENTS_UPDATE: (context, { id, input }) => { 
 		let item = context.state.contents.find((item) => {
 			return item.id == id
 		});
@@ -45,5 +46,14 @@ export default { //非同步 api一定樣放這   //dispatch
 		return axios.patch('http://127.0.0.1:3000/contents/' + item.id, data).then((res) => {
 			context.dispatch('CONTENTS_READ')
 		})
-	}
+	},
+
+	TEST_CORS: (context) => {   //context為action的obj，可使用其功能
+
+		let result = helper.apiKey();
+
+		return axios.get('/data/getHomeData?token='+result).then((res) => {
+			console.log(res.data)
+		})
+	},
 }

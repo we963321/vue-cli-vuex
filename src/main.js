@@ -21,8 +21,5 @@ Vue.config.productionTip = false
 		template: '<App/>'
 	});
 
-
-	Vue.prototype.sayHi = function (){ alert('hi') }
-
 })(Vue)
 

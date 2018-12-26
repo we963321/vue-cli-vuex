@@ -26,6 +26,8 @@
     },
     mounted(){
       this.$store.dispatch('CONTENTS_READ')
+
+      this.$store.dispatch('TEST_CORS')
     },
     computed: {
       contents() {
