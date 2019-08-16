@@ -18,6 +18,8 @@
 
 <script>
 
+  const EXAMPLE_STORE = 'example';
+
   export default {
     data: function () {
       return {
@@ -25,26 +27,26 @@
       }
     },
     mounted(){
-      this.$store.dispatch('CONTENTS_READ')
+      console.log(this.$store)
 
-      this.$store.dispatch('TEST_CORS')
+      this.$store.dispatch(`${EXAMPLE_STORE}/CONTENTS_READ`)
     },
     computed: {
       contents() {
-        return this.$store.state.contents
+        return this.$store.state[`${EXAMPLE_STORE}`].contents
       }
     },
     methods: {
       createHandler() {
         if (!this.input) return false;
 
-        this.$store.dispatch('CONTENTS_ADD', { input: this.input });
+        this.$store.dispatch(`${EXAMPLE_STORE}/CONTENTS_ADD`, { input: this.input });
 
         this.input = '';
       },
       deleteHandler(index) {
         let target = this.contents[index];
-        this.$store.dispatch('CONTENTS_DELETE', { target })
+        this.$store.dispatch(`${EXAMPLE_STORE}/CONTENTS_DELETE`, { target })
       },
       updateHandler(index) {
 

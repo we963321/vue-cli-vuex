@@ -11,8 +11,8 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-        '/data': {                        // 自訂 local 端的位置
-            target: 'http://192.168.0.11:8080/',  // 遠端 URL Domain
+        '/data': {       // 自訂 local 端的位置
+            target: '',  // 遠端 URL Domain
             pathRewrite: {
               '^/data': ''
             }
@@ -20,8 +20,8 @@ module.exports = {
     },
 
     // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
-    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    host: '0.0.0.0', // can be overwritten by process.env.HOST
+    port: 9090, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,
